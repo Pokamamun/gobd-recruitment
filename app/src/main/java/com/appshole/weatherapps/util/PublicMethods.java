@@ -88,8 +88,6 @@ public class PublicMethods {
 			return true;
 		}
 
-//		showAlertDialog(mActivity,
-//				"No internet Connection!");
 
 		return false;
 
