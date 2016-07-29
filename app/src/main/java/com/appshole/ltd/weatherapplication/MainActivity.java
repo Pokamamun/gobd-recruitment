@@ -32,6 +32,7 @@ import com.appshole.weatherapps.constants.Constants;
 import com.appshole.weatherapps.dao.IWeatherDao;
 import com.appshole.weatherapps.dao.WeatherDao;
 import com.appshole.weatherapps.model.Weather;
+import com.appshole.weatherapps.util.PublicMethods;
 import com.facebook.login.LoginManager;
 import com.github.pavlospt.CircleView;
 import com.google.android.gms.common.ConnectionResult;
@@ -125,11 +126,11 @@ public class MainActivity extends AppCompatActivity
 
 
         View navHeaderView = navigationView.getHeaderView(0);
-        //navigationView.removeHeaderView(navHeaderView);
+
         userImage = (ImageView)navHeaderView.findViewById(R.id.imageView);
         username = (TextView)navHeaderView.findViewById(R.id.txtname);
         username.setText(name+" "+surname);
-        //navigationView.addHeaderView(navHeaderView);
+
 
        new  DownloadImage(userImage).execute(imageUrl);
 
@@ -139,6 +140,12 @@ public class MainActivity extends AppCompatActivity
         circleTitle = (CircleView)findViewById(R.id.weather_result);
         windResult = (TextView)findViewById(R.id.wind_result);
         humidityResult = (TextView)findViewById(R.id.humidity_result);
+
+
+
+        if(!PublicMethods.isConnected(MainActivity.this)){
+            PublicMethods.showAlertDialog(MainActivity.this,"No internet Connection");
+        }
 
 
 
