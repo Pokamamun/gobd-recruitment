@@ -59,7 +59,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     // adding value to latlang
     LatLng dhakaLatLng = new LatLng(23.7808871,90.278896);
-    LatLng ctgLatLng = new LatLng(22.3283643,91.7530673);
+    LatLng ctgLatLng = new LatLng(22.3283644,91.7532391);
     LatLng syletLatLng = new LatLng(24.904539,91.861101);
     LatLng rajshahiLatLng = new LatLng(24.363589,88.624135);
     LatLng khulnaLatLng = new LatLng(22.845641,89.540328);

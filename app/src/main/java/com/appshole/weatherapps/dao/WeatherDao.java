@@ -20,14 +20,14 @@ public class WeatherDao implements IWeatherDao {
 
 
     @Override
-    public ArrayList<Weather> GetActivitiesListFromJSONObject(JSONObject json1) throws Exception {
+    public ArrayList<Weather> GetActivitiesListFromJSONObject(JSONObject jsonOBject) throws Exception {
 
 
         ArrayList<Weather> clientInfoList = new ArrayList<Weather>();
         JSONObject json;
         Weather clientInfo = null;
         try {
-            JSONArray jArray = json1.getJSONArray("weather");
+            JSONArray jArray = jsonOBject.getJSONArray("weather");
 
             for (int i = 0; i < jArray.length(); i++) {
                 clientInfo = new Weather();
@@ -42,26 +42,26 @@ public class WeatherDao implements IWeatherDao {
 
 
                 try {
-                    clientInfo.setCity(json1.getString("name"));
+                    clientInfo.setCity(jsonOBject.getString("name"));
                 } catch (Exception e) {
 
                 }
-                JSONObject jsonObject = null;
+                JSONObject jsonObjectMain = null;
                 try {
-                     jsonObject = json1.getJSONObject("main");
-                } catch (Exception e) {
-
-                }
-
-
-                try {
-                    clientInfo.setHumidityValue(jsonObject.getString("humidity"));
+                     jsonObjectMain = jsonOBject.getJSONObject("main");
                 } catch (Exception e) {
 
                 }
 
+
                 try {
-                    clientInfo.setTempVal(jsonObject.getLong("temp"));
+                    clientInfo.setHumidityValue(jsonObjectMain.getString("humidity"));
+                } catch (Exception e) {
+
+                }
+
+                try {
+                    clientInfo.setTempVal(jsonObjectMain.getLong("temp"));
                 } catch (Exception e) {
 
                 }
@@ -74,21 +74,21 @@ public class WeatherDao implements IWeatherDao {
 
 
                 try {
-                    clientInfo.setWeatherTemp(jsonObject.getString("temp"));
+                    clientInfo.setWeatherTemp(jsonObjectMain.getString("temp"));
                 } catch (Exception e) {
 
                 }
 
-                JSONObject jsonObject1 = null;
+                JSONObject jsonObjectWind = null;
                 try {
-                     jsonObject1 = json1.getJSONObject("wind");
+                    jsonObjectWind = jsonOBject.getJSONObject("wind");
                 } catch (Exception e) {
 
                 }
 
 
                 try {
-                    clientInfo.setWindSpeed(jsonObject1.getString("speed"));
+                    clientInfo.setWindSpeed(jsonObjectWind.getString("speed"));
                 } catch (Exception e) {
 
                 }
